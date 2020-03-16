@@ -22,18 +22,52 @@ p {
     margin: 0 0 1rem;
 }
 
-.covid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    column-gap: 2rem;
-    row-gap: 2rem;   
+.header {
+    overflow: hidden;
+}
+
+.header-info {
+    float: left;
+    width: 50%;
+}
+
+.filters {
+    float: right;
+    width: 50%;
+}
+
+.covid-filter {
+    margin-bottom: 1rem;
+}
+
+.covid-filter a {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #666666;
+    text-decoration: none;
+    border-radius: 3px;
+    margin: 0 0.5rem;
+    transition: background 0.4s linear;
+}
+
+.covid-filter a:hover {
+    background: #ececec;
+}
+
+.covid-filter a.current {
+    background: #cecece;
+    color: #fefefe;
 }
 
 .covid-cards {
     border: 1px solid #888888;
-    background-color: #ececec;
+    background: #ececec;
     color: #333333;
     padding: 2rem;
+    width: 19%;
+    margin: 0.5%;
+    height: 45vh;
+    min-height: 420px;
 }
 
 .covid-cards h3 {
@@ -64,26 +98,62 @@ p {
     font-size: 2rem;
 }
 
-@media only screen and (max-width: 1024px) {
-    .covid-container {
-        grid-template-columns: repeat(4, 1fr);
+@media only screen and (max-width: 1440px) {
+    .covid-cards {
+        width: 24%;
+        min-height: 440px;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .covid-container {
-        grid-template-columns: repeat(3, 1fr);
+    .covid-cards {
+        font-size: 1.3rem;
+        width: 32%;
+        min-height: 480px;
+    }
+    .covid-cards p {
+        font-size: 1.5rem;
+    }
+    .covid-cards .covid-note {
+        font-size: 1.2rem;
     }
 }
 
 @media only screen and (max-width: 480px) {
-    .covid-container {
-        grid-template-columns: repeat(2, 1fr);
+    .covid-cards {
+        font-size: 1.3rem;
+        width: 49%;
+        min-height: 490px;
+    }
+    .covid-cards p {
+        font-size: 1.5rem;
+    }
+    .covid-cards .covid-note {
+        font-size: 1.2rem;
     }
 }
 
 @media only screen and (max-width: 414px) {
-    .covid-container {
-        grid-template-columns: repeat(1, 1fr);
+    .header-info,
+    .filters {
+        float: unset;
+        width: 100%;
+    }
+    .covid-filter a {
+        padding: 0.5rem 1rem;
+        margin: 0 0.2rem;
+    }
+    .covid-cards {
+        font-size: 1.4rem;
+        width: 99%;
+        margin: 1%;
+        height: auto;
+        min-height: unset;
+    }
+    .covid-cards p {
+        font-size: 1.5rem;
+    }
+    .covid-cards .covid-note {
+        font-size: 1.2rem;
     }
 }

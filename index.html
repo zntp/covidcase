@@ -5,15 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 CASES</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.min.css">
 </head>
 <body>
-    <header>
-        <h1><strong>Total PH Covid Cases: <span id="case-total"></span></strong><h1>
-        <p>Male: <span id="total-male"></span> | Female: <span id="total-female"></span></p>
-        <p><strong>Recovered:</strong> <span id="case-recovered"></span> | <strong>Admitted:</strong> <span id="case-admitted"></span> | <strong>Died:</strong> <span id="case-died"></span></p>
-    </header>
+    <header class="header">
+        <div class="header-info">
+            <h1><strong>Total PH Covid Cases: <span id="case-total"></span></strong><h1>
+            <p>Male: <span id="total-male"></span> | Female: <span id="total-female"></span></p>
+            <p><strong>Recovered:</strong> <span id="case-recovered"></span> | <strong>Admitted:</strong> <span id="case-admitted"></span> | <strong>Died:</strong> <span id="case-died"></span></p>
+        </div>       
+        <section class="filters">
+            <p><strong>FILTERS</strong></p>
+            <div class="covid-filter" data-filter-group="gender">
+                <a href="#" data-filter="*" class="current">All Gender</a>
+                <a href="#" data-filter=".male">Male</a>
+                <a href="#" data-filter=".female">Female</a>
+            </div>
+            <div class="covid-filter" data-filter-group="date">
+                <a href="#" data-filter="*" class="current">All Month</a>
+                <a href="#" data-filter=".january">Jan</a>
+                <a href="#" data-filter=".february">Feb</a>
+                <a href="#" data-filter=".march">Mar</a>
+            </div>
+            <div class="covid-filter" data-filter-group="status">
+                <a href="#" data-filter="*" class="current">All Status</a>
+                <a href="#" data-filter=".recovered">Recovered</a>
+                <a href="#" data-filter=".admitted">Admitted</a>
+                <a href="#" data-filter=".died">Died</a>
+            </div>
+        </section>        
+    </header>    
     <section class="covid-container" id="covid-container"></section>
-<script src="script.js"></script>
+
+<script src="https://code.jquery.com/jquery-git.min.js"></script>
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script src="script.min.js"></script>
 </body>
 </html>

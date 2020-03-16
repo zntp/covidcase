@@ -25,15 +25,19 @@ request.onload = function () {
                 h3.textContent = "Case #" + currentData.case_no;
 
                 const date = document.createElement('p');
-                date.textContent = "Date: " + currentData.date;
+                date.textContent = "Date: " + currentData.date;                
+                currentMonth = currentData.date.replace(/ .*/,'').toLowerCase();
+                card.classList.add(currentMonth);
 
                 const age = document.createElement('p');
                 age.textContent = "Age: " + currentData.age;
 
                 const gender = document.createElement('p');
                 if (currentData.gender === 'Male') {
+                    card.classList.add('male');
                     totalMale++;
                 } else {
+                    card.classList.add('female');
                     totalFemale++;
                 }
                 gender.textContent = "Gender: " + currentData.gender;
@@ -50,12 +54,15 @@ request.onload = function () {
                 const status = document.createElement('p');
                 if (currentData.status === 'Recovered'){
                     status.setAttribute('class', 'text-green large');
+                    card.classList.add('recovered');
                     caseRecovered++;
                 } else if (currentData.status === 'Admitted') {
                     status.setAttribute('class', 'text-orange large');
+                    card.classList.add('admitted');
                     caseAdmitted++;
                 } else {
                     status.setAttribute('class', 'text-red large');
+                    card.classList.add('died');
                     caseDied++
                 }
                 status.textContent = "Status: " + currentData.status;
@@ -76,8 +83,7 @@ request.onload = function () {
                 app.appendChild(card);
         }
 
-       document.getElementById('case-total').textContent = data.length;
-       //console.log(data.length);
+        document.getElementById('case-total').textContent = data.length;
 
         totalMaleContainer = document.getElementById('total-male');
         totalFemaleContainer = document.getElementById('total-female');
@@ -90,6 +96,49 @@ request.onload = function () {
         totalCaseRecovered.textContent = caseRecovered;
         totalCaseAdmitted.textContent = caseAdmitted;
         totalCaseDied.textContent = caseDied;
+
+
+        /*
+        * Sorting of Covid cases cards
+        */
+        var $container = $('.covid-container').isotope({
+            itemSelector: '.covid-cards'
+        });
+        
+        var filters = {};
+        
+        $('.filters').on( 'click', 'a', function( event ) {
+            var $button = $( event.currentTarget );
+            // get group key
+            var $buttonGroup = $button.parents('.covid-filter');
+            var filterGroup = $buttonGroup.attr('data-filter-group');
+            // set filter for group
+            filters[ filterGroup ] = $button.attr('data-filter');
+            // combine filters
+            var filterValue = concatValues( filters );
+            // set filter for Isotope
+            $container.isotope({ filter: filterValue });
+        });
+        
+        // change current class on buttons
+        $('.covid-filter').each( function( i, buttonGroup ) {
+            var $buttonGroup = $( buttonGroup );
+            $buttonGroup.on( 'click', 'a', function( event ) {
+            $buttonGroup.find('.current').removeClass('current');
+            var $button = $( event.currentTarget );
+            $button.addClass('current');
+            });
+        });
+            
+        // flatten object by concatting values
+        function concatValues( obj ) {
+            var value = '';
+            for ( var prop in obj ) {
+            value += obj[ prop ];
+            }
+            return value;
+        }
+
     } else {
         const error = document.createElement('section');
         error.setAttribute('class', 'error-message');
