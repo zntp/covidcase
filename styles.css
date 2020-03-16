@@ -1,0 +1,77 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    padding: 2rem;
+}
+
+p {
+    font-size: 1.6rem;
+    margin: 0 0 1rem;
+}
+
+.covid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;   
+}
+
+.covid-cards {
+    border: 1px solid #888888;
+    background-color: #ececec;
+    color: #333333;
+    padding: 2rem;
+}
+
+.covid-note {
+    font-size: 1.2rem;
+}
+
+.text-green {
+    color: green;
+}
+
+.text-orange {
+    color: orange;
+}
+
+.text-red {
+    color: red;
+}
+
+.large {
+    font-size: 2rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    .covid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .covid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .covid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    .covid-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
