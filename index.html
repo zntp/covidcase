@@ -9,27 +9,11 @@
 </head>
 <body>
     <header>
-        <p><strong>Total PH Covid Cases: <?php echo $total; ?></strong><p>
-        <p>Male: <span id="total-male"></span></p>
-        <p>Female: <span id="total-female"></span></p>
+        <h1><strong>Total PH Covid Cases: <span id="case-total"></span></strong><h1>
+        <p>Male: <span id="total-male"></span> | Female: <span id="total-female"></span></p>
+        <p><strong>Recovered:</strong> <span id="case-recovered"></span> | <strong>Admitted:</strong> <span id="case-admitted"></span> | <strong>Died:</strong> <span id="case-died"></span></p>
     </header>
-    <section class="covid-container" id="covid-container">
-
-            <!--
-            <div class="covid-cards">
-                <strong>Case #<?php echo $case['case_no']; ?></strong><br><br>
-                <p><strong>Date:</strong> <?php echo $case['date']; ?></p>
-                <p><strong>Age:</strong> <?php echo $case['age']; ?></p>
-                <p><strong>Gender:</strong> <?php echo $case['gender']; ?></p>
-                <p><strong>Nationality:</strong> <?php echo $case['nationality']; ?></p>
-                <p><strong>Hospital Admitted To:</strong> <?php echo $case['hospital_admitted_to']; ?></p>
-                <p><strong>Travel History Abroad:</strong> <?php echo $case['had_recent_travel_history_abroad']; ?></p>
-                <p class="<?php echo ($case['status'] == 'Recovered') ? 'text-green' : (($case['status'] == 'Admitted') ? 'text-orange' : 'text-red') ?> large"><strong>Status:</strong> <?php echo $case['status']; ?></p>
-                <p class="covid-note"><strong>Notes:</strong> <?php echo $case['notes']; ?></p>
-            </div>
-        -->
-    </section>
-
+    <section class="covid-container" id="covid-container"></section>
 <script src="script.js"></script>
 </body>
 </html>

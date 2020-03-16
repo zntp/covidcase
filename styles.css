@@ -13,6 +13,10 @@ body {
     padding: 2rem;
 }
 
+h1 {
+    margin-bottom: 2rem;
+}
+
 p {
     font-size: 1.6rem;
     margin: 0 0 1rem;
@@ -41,15 +45,18 @@ p {
     font-size: 1.2rem;
 }
 
-.text-green {
+.text-green,
+#case-recovered {
     color: green;
 }
 
-.text-orange {
+.text-orange,
+#case-admitted {
     color: orange;
 }
 
-.text-red {
+.text-red,
+#case-died {
     color: red;
 }
 

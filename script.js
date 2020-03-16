@@ -9,8 +9,12 @@ request.onload = function () {
     console.log(data);
     if (request.status >= 200 && request.status < 400) {
 
+        let totalCases = data.length;
         let totalMale = 0;
         let totalFemale = 0;
+        let caseRecovered = 0;
+        let caseAdmitted = 0;
+        let caseDied = 0;
 
         for (let i = 0, len = data.length; i < len; i++) {
                 currentData = data[i];
@@ -46,10 +50,13 @@ request.onload = function () {
                 const status = document.createElement('p');
                 if (currentData.status === 'Recovered'){
                     status.setAttribute('class', 'text-green large');
+                    caseRecovered++;
                 } else if (currentData.status === 'Admitted') {
                     status.setAttribute('class', 'text-orange large');
+                    caseAdmitted++;
                 } else {
                     status.setAttribute('class', 'text-red large');
+                    caseDied++
                 }
                 status.textContent = "Status: " + currentData.status;
 
@@ -68,10 +75,21 @@ request.onload = function () {
                 card.appendChild(notes);
                 app.appendChild(card);
         }
+
+       document.getElementById('case-total').textContent = data.length;
+       //console.log(data.length);
+
         totalMaleContainer = document.getElementById('total-male');
         totalFemaleContainer = document.getElementById('total-female');
         totalMaleContainer.textContent = totalMale;
         totalFemaleContainer.textContent = totalFemale;
+
+        totalCaseRecovered = document.getElementById('case-recovered');
+        totalCaseAdmitted = document.getElementById('case-admitted');
+        totalCaseDied = document.getElementById('case-died');
+        totalCaseRecovered.textContent = caseRecovered;
+        totalCaseAdmitted.textContent = caseAdmitted;
+        totalCaseDied.textContent = caseDied;
     } else {
         const error = document.createElement('section');
         error.setAttribute('class', 'error-message');
