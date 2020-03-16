@@ -32,6 +32,11 @@ p {
     padding: 2rem;
 }
 
+.covid-cards h3 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
 .covid-note {
     font-size: 1.2rem;
 }
