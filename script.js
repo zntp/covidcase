@@ -15,6 +15,7 @@ request.onload = function () {
         let caseRecovered = 0;
         let caseAdmitted = 0;
         let caseDied = 0;
+        let month = undefined;
 
         for (let i = 0, len = data.length; i < len; i++) {
                 currentData = data[i];
@@ -25,15 +26,17 @@ request.onload = function () {
                 h3.textContent = "Case #" + currentData.case_no;
 
                 const date = document.createElement('p');
-                date.textContent = "Date: " + currentData.date;                
-                currentMonth = currentData.date.replace(/ .*/,'').toLowerCase();
+                var caseDate = new Date(currentData.date);
+                date.textContent = "Date: " + caseDate.toDateString();            
+                month = caseDate.toDateString().split(" ");
+                currentMonth = month[1].toLowerCase();
                 card.classList.add(currentMonth);
-
+                
                 const age = document.createElement('p');
                 age.textContent = "Age: " + currentData.age;
 
                 const gender = document.createElement('p');
-                if (currentData.gender === 'Male') {
+                if (currentData.gender === 'M') {
                     card.classList.add('male');
                     totalMale++;
                 } else {
@@ -69,7 +72,7 @@ request.onload = function () {
 
                 const notes = document.createElement('p');
                 notes.setAttribute('class', 'covid-note');
-                notes.textContent = "Notes: " + currentData.notes;
+                notes.textContent = "Notes: " + currentData.other_information;
                 
                 card.appendChild(h3);
                 card.appendChild(date);

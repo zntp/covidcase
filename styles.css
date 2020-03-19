@@ -66,7 +66,7 @@ p {
     padding: 2rem;
     width: 19%;
     margin: 0.5%;
-    height: 45vh;
+    height: 35vh;
     min-height: 420px;
 }
 
@@ -101,6 +101,13 @@ p {
 @media only screen and (max-width: 1440px) {
     .covid-cards {
         width: 24%;
+        min-height: 420px;
+    }
+}
+
+@media only screen and (max-width: 12840px) {
+    .covid-cards {
+        width: 24%;
         min-height: 440px;
     }
 }
@@ -120,6 +127,11 @@ p {
 }
 
 @media only screen and (max-width: 480px) {
+    .header-info,
+    .filters {
+        float: unset;
+        width: 100%;
+    }
     .covid-cards {
         font-size: 1.3rem;
         width: 49%;
