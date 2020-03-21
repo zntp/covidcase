@@ -5,37 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 CASES</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.min.css">
 </head>
 <body>
-    <header class="header">
+    <header class="header hidden">
         <div class="header-info">
-            <h1><strong>Total PH Covid Cases: <span id="case-total"></span></strong><h1>
-            <p>Male: <span id="total-male"></span> | Female: <span id="total-female"></span></p>
-            <p><strong>Recovered:</strong> <span id="case-recovered"></span> | <strong>Admitted:</strong> <span id="case-admitted"></span> | <strong>Died:</strong> <span id="case-died"></span></p>
-        </div>       
-        <section class="filters">
-            <p><strong>FILTERS</strong></p>
-            <div class="covid-filter" data-filter-group="gender">
-                <a href="#" data-filter="*" class="current">All Gender</a>
-                <a href="#" data-filter=".male">Male</a>
-                <a href="#" data-filter=".female">Female</a>
+            
+        </div>                
+    </header>
+
+    <section id="app">
+        <div class="grid-container">
+            <div class="grid-container__card-header" data-filter="header">
+                <span id="current-date"></span>
+                <h1>Covid PH Tracker</h1>
+                <p class="large"><strong>Total PH Covid Cases: <span id="case-total"></span></strong></p>
+                <p><strong>Recovered:</strong> <span id="case-recovered"></span> | <strong>Admitted:</strong> <span id="case-admitted"></span> | <strong>Died:</strong> <span id="case-died"></span></p>
+                <p>Male: <span id="total-male"></span> | Female: <span id="total-female"></span></p>                
+                <p>Mortality rate: <span id="mortality-rate"></span>%</p>                
             </div>
-            <div class="covid-filter" data-filter-group="date">
-                <a href="#" data-filter="*" class="current">All Month</a>
-                <a href="#" data-filter=".jan">Jan</a>
-                <a href="#" data-filter=".feb">Feb</a>
-                <a href="#" data-filter=".mar">Mar</a>
+            <div class="grid-container__card grid-container__card-general grid--center pointer" data-case="general">
+                <h3>General</h3>
+            </div>  
+            <div class="grid-container__card grid-container__card-other grid--center pointer" data-case="other">
+                <h3>Other Cases</h3>
+            </div>                      
+            <div class="grid-container__card grid-container__card-checkpoint grid--center pointer" data-case="checkpoint">
+                <h3>Checkpoints</h3>          
             </div>
-            <div class="covid-filter" data-filter-group="status">
-                <a href="#" data-filter="*" class="current">All Status</a>
-                <a href="#" data-filter=".recovered">Recovered</a>
-                <a href="#" data-filter=".admitted">Admitted</a>
-                <a href="#" data-filter=".died">Died</a>
+        </div>
+        <div id="data-container" class="data-container">            
+            <div class="data-container__general active">
+                <section class="filters">                    
+                    <div class="covid-filter" data-filter-group="gender">
+                        <a href="#" data-filter="*" class="current">All Gender</a>
+                        <a href="#" data-filter=".male">Male</a>
+                        <a href="#" data-filter=".female">Female</a>
+                    </div>
+                    <div class="covid-filter" data-filter-group="date">
+                        <a href="#" data-filter="*" class="current">All Month</a>
+                        <a href="#" data-filter=".jan">Jan</a>
+                        <a href="#" data-filter=".feb">Feb</a>
+                        <a href="#" data-filter=".mar">Mar</a>
+                    </div>
+                    <div class="covid-filter" data-filter-group="status">
+                        <a href="#" data-filter="*" class="current">All Status</a>
+                        <a href="#" data-filter=".recovered">Rec</a>
+                        <a href="#" data-filter=".admitted">Admitted</a>
+                        <a href="#" data-filter=".died">Died</a>
+                    </div>
+                </section>
+                <section class="covid-container" id="covid-container"></section>
             </div>
-        </section>        
-    </header>    
-    <section class="covid-container" id="covid-container"></section>
+            <div class="data-container__other">                
+                <section class="test-container" id="test-container"></section>
+                <section class="other-container" id="other-container"></section>
+            </div>
+            <div class="data-container__checkpoint grid--center">
+                <section class="checkpoint-container" id="checkpoint-container">
+                    <p class="construction">Under Construction</p>
+                </section>
+            </div>
+        </div>
+    </section>   
 
 <script src="https://code.jquery.com/jquery-git.min.js"></script>
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
